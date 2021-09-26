@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+        <div class="date">
+            {{ post.published_date }}
+        </div>
+        {% else %}
+        <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}"><i class="large material-icons">publish</i> Publicar post</a>
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="large material-icons">mode_edit</i> Editar post</span></a>
+        <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><i class="large material-icons">delete</i> Eliminar Post</span></a>
+        {% endif %}
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}
